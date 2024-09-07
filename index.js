@@ -802,7 +802,10 @@ function play() {
     let pageHelper = new PageHelper(),
         board = pageHelper.getBoard();
 
-    if (!board) return;
+    if (!board) {
+        location.reload();
+        return;
+    }
 
     let solver = new RHSolver(board),
         result = solver.solve();
@@ -814,8 +817,6 @@ function play() {
 }
 
 setTimeout(function() {
-    let reload = false;
-    
     let modal = document.querySelector('#modals-container');
     //console.log(modal);
     if (modal && modal.innerHTML !== '') {
@@ -844,13 +845,10 @@ setTimeout(function() {
             prize.querySelector('.questprizes__footer button').click();
             setTimeout(() => {play();}, 2000);
         }
+        return true;
     }
 
-    if (reload) {
-        location.reload();
-    } else {
-        play();
-    }
+    play();
 }, 2000);
 
 /*
