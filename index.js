@@ -814,7 +814,7 @@ function play() {
 }
 
 setTimeout(function() {
-    let reload = true;
+    let reload = false;
     
     let modal = document.querySelector('#modals-container');
     //console.log(modal);
@@ -826,7 +826,6 @@ setTimeout(function() {
             let items = objmap.querySelectorAll('.map__items .map__item:not(.disabled,.finded)');
             if (items && items[0]) {
                 items[0].click();
-                reload = false;
                 setTimeout(() => {
                     modal.querySelector('.map__hint button').click();
                     let gift = modal.querySelector('.boostgift_bonus');
@@ -843,10 +842,8 @@ setTimeout(function() {
         if (prize) {
             console.log('prize!');
             prize.querySelector('.questprizes__footer button').click();
-            reload = false;
             setTimeout(() => {play();}, 2000);
         }
-        return true;
     }
 
     if (reload) {
