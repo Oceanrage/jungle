@@ -817,6 +817,9 @@ function play() {
 }
 
 setTimeout(function() {
+    if (document.location.pathname.indexOf('jungleStory2019') < 0) {
+        return false;
+    }
     let modal = document.querySelector('#modals-container');
     //console.log(modal);
     if (modal && modal.innerHTML !== '') {
